@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="site.master.cs" Inherits="cambro.site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Quality Apps</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="initial-scale=1.0, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-height" />
+
+    <link href="<% =Page.ResolveUrl("~/css/bootstrap/bootstrap.min.css") %>" rel="stylesheet" />
+    <link href="<% =Page.ResolveUrl("~/css/jquery/jquery-ui.css") %>" rel="stylesheet" />
+
+    <script src="<% =Page.ResolveUrl("~/scripts/jquery/jquery-3.3.1.min.js") %>"></script>
+    <script src="<% =Page.ResolveUrl("~/scripts/jquery/jquery-ui.js") %>"></script>
+    <script src="<% =Page.ResolveUrl("~/scripts/bootstrap/bootstrap.min.js") %>"></script>
+
+    <script src="<% =Page.ResolveUrl("~/menu/menu.js") %>"></script>
+    <link href="<% =Page.ResolveUrl("~/menu/menu.css?v=" + cambro._global.cachedVersion()) %>" rel="stylesheet">
+
+    <script src="<% =Page.ResolveUrl("~/scripts/global.js?v=" + cambro._global.cachedVersion()) %>"></script>
+    <link href="<% =Page.ResolveUrl("~/css/site.css?v=" + cambro._global.cachedVersion()) %>" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="phHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="page">
+            <div class="header">
+                <div style="float: left;">
+                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/images/logo.png?v-1" />
+                </div>
+                <div style="float: left; padding-left: 200px;">
+                    <div id="dvSpoofUser" runat="server" style="display: none;">
+                        <div style="float: left; padding-right: 10px;">Spoof User:</div>
+                        <div style="float: left;">
+                            <asp:DropDownList ID="ddlUsers" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlUsers_SelectedIndexChanged"></asp:DropDownList>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div style="float: right; padding-right: 20px;">
+                    <div style="padding-top: 5px;">
+                        <div style="float: left; padding-right: 20px;">
+                            <asp:Label ID="lblWelcome" runat="server" Text="" class="welcome"></asp:Label>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menuBar">
+                <asp:Literal ID="ltMenu" runat="server"></asp:Literal>
+            </div>
+
+
+            <div class="content">
+                <asp:ScriptManager ID="scScriptManager" runat="server"></asp:ScriptManager>
+                <asp:ContentPlaceHolder ID="phContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
